@@ -6,8 +6,12 @@ function Nav() {
     <header>
       <nav className="header-nav">
         <div className="header-nav-box-one">
-          <button className="btn btn-primary btn-sm">English</button>
-          <button className="btn btn-primary btn-sm">Sound</button>
+          <button className="btn btn-primary btn-sm top-common-butoon">
+            English
+          </button>
+          <button className="btn btn-primary btn-sm top-common-butoon">
+            Sound
+          </button>
         </div>
 
         <div className="header-nav-box-two">

@@ -8,6 +8,7 @@ import StarImage from "../components/StarImage";
 import star from "../assets/start_1.png";
 import biscuitOne from "../assets/biscuit_1.png";
 import biscuitTwo from "../assets/biscuit_2.png";
+import flag from "../assets/flag_1.png";
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,6 +20,7 @@ function SectionOne() {
   const imageLeftRef = useRef(null);
   const imageRightRef = useRef(null);
   const imageRightRefTwo = useRef(null);
+  const centerTextImg = useRef(null);
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -44,6 +46,7 @@ function SectionOne() {
         { x: "40%", duration: 4 }
       )
       .fromTo(imageRightRefTwo.current, { x: 0 }, { x: "40%", duration: 4 }, 0);
+    // .fromTo(centerTextImg.current, { x: 0 }, { scale: 2, duration: 4 }, 0);
   }, []);
 
   return (
@@ -52,6 +55,7 @@ function SectionOne() {
 
       <div className="section-1-text-img-center-box">
         <img
+          ref={centerTextImg}
           src={centerImageOne}
           alt=""
           className="d-block img-responsive section-1-text-img-one"
@@ -107,6 +111,12 @@ function SectionOne() {
           width={100}
         />
       </div>
+
+      {/* <img
+        src={flag}
+        alt=""
+        className="d-block img-responsive section-1-bottom-flag-img"
+      /> */}
     </section>
   );
 }

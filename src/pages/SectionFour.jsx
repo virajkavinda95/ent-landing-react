@@ -36,7 +36,6 @@ function SectionFour() {
         start: "top",
         end: "bottom",
         scrub: true,
-        markers: true,
       },
     });
 

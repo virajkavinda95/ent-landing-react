@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import biscuit from "../assets/biscuit_2.png";
 import pupBalloon from "../assets/pup_balloon.png";
 import Card from "../components/Card";
@@ -12,7 +12,61 @@ import rightBuild from "../assets/right_build.png";
 import waveOrange from "../assets/wave_2_right.png";
 import wavePurple from "../assets/wave_1.png";
 
+import { gsap, Power1 } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 function SectionFive() {
+  const roundRef = useRef(null);
+  const kiteRef = useRef(null);
+  const buildRef = useRef(null);
+  const rightWaveOne = useRef(null);
+  const rightWaveTwo = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section-5",
+        toggleActions: "none pause reverse none",
+        start: "top top",
+        end: "bottom",
+        scrub: true,
+      },
+    });
+
+    tl.fromTo(
+      roundRef.current,
+      { left: "-20%", top: "60%" },
+      { left: "20%", top: "-50%", duration: 4 },
+      0
+    )
+      .fromTo(
+        kiteRef.current,
+        { left: "10%", top: "40%" },
+        { left: "10%", top: "-50%", duration: 4 },
+        0
+      )
+      .fromTo(
+        buildRef.current,
+        { right: "-10%", top: "40%" },
+        { right: "10%", top: "30%", duration: 4 },
+        0
+      )
+      .fromTo(
+        rightWaveOne.current,
+        { right: "-10%", right: "-80%" },
+        { right: "-80%", right: "10%", duration: 4 },
+        0
+      )
+      .fromTo(
+        rightWaveTwo.current,
+        { right: "-10%", right: "-40%" },
+        { right: "-40%", right: "10%", duration: 4 },
+        0
+      );
+  }, []);
+
   return (
     <section className="section-5">
       <img
@@ -43,6 +97,7 @@ function SectionFive() {
       </div>
 
       <img
+        ref={kiteRef}
         src={kite}
         alt=""
         className="d-block img-responsive section-5-left-kite-img"
@@ -57,6 +112,7 @@ function SectionFive() {
       </div>
 
       <img
+        ref={roundRef}
         src={rounder}
         alt="rounder"
         className="d-bloc img-responsive section-5-left-rounder-img"
@@ -69,18 +125,21 @@ function SectionFive() {
       />
 
       <img
+        ref={buildRef}
         src={rightBuild}
         alt="rightBuild"
         className="d-block img-responsive section-5-left-right-build-img"
       />
 
       <img
+        ref={rightWaveOne}
         src={waveOrange}
         alt="waveOrange"
         className="d-block img-responsive section-5-wave-orange-img"
       />
 
       <img
+        ref={rightWaveTwo}
         src={wavePurple}
         alt="wavePurple"
         className="d-block img-responsive section-5-wave-puple-img"
