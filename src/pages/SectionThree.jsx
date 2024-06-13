@@ -5,6 +5,8 @@ import balloonTwo from "../assets/balloon_2.png";
 import waveImageRight from "../assets/wave_2_right.png";
 import textImage from "../assets/letters_bottom.png";
 import Button from "../components/Button";
+import audio from "../assets/audio/audio3.mp3";
+
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -14,6 +16,10 @@ function SectionThree() {
   const waveOne = useRef(null);
   const textImg = useRef(null);
   const waveTwo = useRef(null);
+
+  // Audio ref
+  const audioOne = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const tl2 = gsap.timeline({
@@ -30,10 +36,42 @@ function SectionThree() {
       .fromTo(waveOne.current, { x: "-40%" }, { x: "20%", duration: 4 })
       .fromTo(waveTwo.current, { x: "20%" }, { x: "-20%", duration: 4 })
       .fromTo(textImg.current, { x: 0 }, { x: "40%", duration: 4 }, 0);
+
+    // ###########################
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          audioOne.current.play();
+        } else {
+          audioOne.current.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section className="section-3">
+    <section className="section-3" ref={sectionRef}>
+      <audio
+        ref={audioOne}
+        src={audio}
+        style={{ display: "none" }}
+        controls={false}
+        preload="auto"
+      />
       <div className="section-3-left-image-box">
         <img
           ref={waveOne}

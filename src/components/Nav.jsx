@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import headerLogo from "../assets/logo.png";
 
 function Nav() {
+  const [soundEnabled, setSoundEnabled] = useState(true);
+
+  const [audioPermissionGranted, setAudioPermissionGranted] = useState(false);
+  const requestAudioPermission = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: true,
+      });
+      console.log("Audio permission granted");
+      setAudioPermissionGranted(true);
+      // Now you can use the `stream` for audio processing or recording
+    } catch (error) {
+      console.error("Error accessing audio", error);
+      setAudioPermissionGranted(false);
+    }
+  };
+  useEffect(() => {
+    requestAudioPermission();
+  }, []);
+
+  const toggleSound = () => {
+    setSoundEnabled(!soundEnabled);
+  };
+
   return (
     <header>
       <nav className="header-nav">
@@ -9,8 +33,12 @@ function Nav() {
           <button className="btn btn-primary btn-sm top-common-butoon">
             English
           </button>
-          <button className="btn btn-primary btn-sm top-common-butoon">
-            Sound
+          <button
+            type="button"
+            onClick={requestAudioPermission}
+            className="btn btn-primary btn-sm top-common-butoon"
+          >
+            {soundEnabled ? "enable" : "disable"}
           </button>
         </div>
 

@@ -12,6 +12,8 @@ import flag from "../assets/flag_1.png";
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import audio from "../assets/audio/audio1.mp3";
+
 gsap.registerPlugin(ScrollTrigger);
 
 function SectionOne() {
@@ -21,6 +23,11 @@ function SectionOne() {
   const imageRightRef = useRef(null);
   const imageRightRefTwo = useRef(null);
   const centerTextImg = useRef(null);
+
+  // Audio ref
+  const audioOne = useRef(null);
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -47,11 +54,51 @@ function SectionOne() {
       )
       .fromTo(imageRightRefTwo.current, { x: 0 }, { x: "40%", duration: 4 }, 0);
     // .fromTo(centerTextImg.current, { x: 0 }, { scale: 2, duration: 4 }, 0);
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          audioOne.current.play();
+        } else {
+          audioOne.current.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section className="section-1">
+    <section className="section-1" ref={sectionRef}>
       <img src={headerImg} alt="" className="section-1-img-header" />
+
+      {/* <iframe
+        ref={audioOne}
+        src={audio}
+        allow="autoplay"
+        style={{ display: "none" }}
+        id="iframeAudio"
+      ></iframe> */}
+
+      <audio
+        ref={audioOne}
+        src={audio}
+        style={{ display: "none" }}
+        controls={false}
+        preload="auto"
+      />
 
       <div className="section-1-text-img-center-box">
         <img

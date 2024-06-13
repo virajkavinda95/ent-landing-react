@@ -12,6 +12,8 @@ import daughter from "../assets/daughter_1.png";
 import wavePink from "../assets/wave_3_left.png";
 import letterBox from "../assets/letter_box.png";
 
+import audio from "../assets/audio/audio4.mp3";
+
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -27,6 +29,10 @@ function SectionFour() {
   const pMoneyRight = useRef(null);
   const bMoneyRight = useRef(null);
   const letterBRight = useRef(null);
+
+  // Audio ref
+  const audioOne = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const tl2 = gsap.timeline({
@@ -64,10 +70,43 @@ function SectionFour() {
         { x: 0, rotate: 10, duration: 10 },
         0
       );
+
+    // Autoplay audio section
+    // ###########################
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          audioOne.current.play();
+        } else {
+          audioOne.current.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section className="section-4">
+    <section className="section-4" ref={sectionRef}>
+      <audio
+        ref={audioOne}
+        src={audio}
+        style={{ display: "none" }}
+        controls={false}
+        preload="auto"
+      />
       <div className="section-4-left-top-img-box">
         <img
           src={waveOne}

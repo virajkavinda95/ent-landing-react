@@ -3,6 +3,7 @@ import cup from "../assets/cup1.png";
 import star from "../assets/start_1.png";
 import kite from "../assets/kite_1.png";
 import Button from "../components/Button";
+import audio from "../assets/audio/audio2.mp3";
 
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,6 +12,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 function SectionTwo() {
   const kiteRef = useRef(null);
+
+  // Audio ref
+  const audioOne = useRef(null);
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const tl2 = gsap.timeline({
@@ -23,10 +28,41 @@ function SectionTwo() {
     });
 
     tl2.fromTo(kiteRef.current, { y: 0 }, { y: "-40%", duration: 2 }, 0);
+
+    const handleIntersection = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          audioOne.current.play();
+        } else {
+          audioOne.current.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5,
+    });
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section className="section-2">
+    <section className="section-2" ref={sectionRef}>
+      <audio
+        ref={audioOne}
+        src={audio}
+        style={{ display: "none" }}
+        controls={false}
+        preload="auto"
+      />
       <div className="section-2-left-box">
         <img src={cup} alt="" className="d-block section-2-cup-image" />
       </div>
