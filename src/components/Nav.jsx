@@ -12,7 +12,7 @@ function Nav() {
 
         <div className="header-nav-box-two">
           <img
-            src={headerLogo}
+            src={"#"}
             alt="headerLogo"
             className="d-block img-responsive header-nav-logo"
             width={100}
