@@ -6,6 +6,7 @@ import SectionFour from "./pages/SectionFour";
 import "./App.css";
 import Nav from "./components/Nav";
 import SectionFive from "./pages/SectionFive";
+import SectionSix from "./pages/SectionSix";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <SectionThree />
       <SectionFour />
       <SectionFive />
+      <SectionSix />
     </>
   );
 }

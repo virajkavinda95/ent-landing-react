@@ -362,6 +362,226 @@ div.section-4-center-box{
   /* transform: rotateX(-180deg); */
 }
 
+/* section-5 */
+
+.section-5{
+  position: relative;
+  width: 100%;
+  height: 250vh;
+  overflow-y: hidden;
+}
+
+.section-5-left-biscuit-img{
+  position: absolute;
+  left: 10%;
+}
+
+.section-5-left-pup-balloon-img{
+  position: absolute;
+  right: 10%;
+  width: 300px;
+  animation: float-up-down-right 6s ease infinite;
+}
+
+.section-5-center-card-box{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.common-card-center{
+  width: 500px;
+  height: auto;
+  box-sizing: border-box;
+  border: 1px solid #8a59c8;
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.common-card-center.sec{
+  border: 1px solid #f7c73f;
+}
+
+.common-card-inner-image{
+  width: 100%;
+}
+
+.section-5-bottom-box{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-5-bottom-inner-top-text{
+  color: #eb4571;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2rem;
+}
+
+.section-5-bottom-inner-center-text{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.section-5-bottom-box .common-btn-center{
+  margin: 40px 0 0 10px;
+  font-size: 2rem;
+  width: 300px;
+  height: 50px;
+}
+
+.section-5-left-kite-img{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 300px;
+  animation: float-up-down 3s ease infinite;
+}
+
+.section-5-bottom-two-box{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-5-bottom-two-inner-text{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  width: 700px;
+  text-align: center;
+}
+
+.section-5-left-rounder-img{
+  position: absolute;
+  left: 5%;
+  top: 45%;
+  width: 650px;
+  transform: rotate(15deg);
+}
+
+.section-5-left-pink-balloon-img{
+  position: absolute;
+  left: 5%;
+  top: 75%;
+  transform: rotate(-50deg) !important;
+  animation: float-up-down-right 6s ease infinite;
+}
+
+.section-5-left-right-build-img{
+  position: absolute;
+  right: -10%;
+  top: 30%;
+  width: 450px;
+  transform: rotate(-10deg);
+}
+
+.section-5-wave-orange-img{
+  position: absolute;
+  right: -5%;
+  top: 60%;
+  width: 1500px;
+  z-index: 1;
+}
+
+.section-5-wave-puple-img{
+  position: absolute;
+  right: -5%;
+  top: 60%;
+  width: 900px;
+}
+
+.section-5-margin-bottom-two-box{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-5-margin-bottom-two-inner-text{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  width: 700px;
+  text-align: center;
+}
+
+.section-5-margin-bottom-two-box .common-btn-center{
+  margin: 40px 0 0 10px;
+  font-size: 2rem;
+  width: 300px;
+  height: 50px;
+}
+
+/* section-6 */
+
+.section-6{
+  position: relative;
+  width: 100%;
+  height: 250vh;
+  overflow-y: hidden;
+  z-index: 1;
+  top: -10%;
+}
+
+.section-6-music-one-img{
+  position: absolute;
+  width: 50px;
+  left: 15%;
+  animation: rotate-right-left 3s ease infinite;
+}
+
+.section-6-music-two-img{
+  position: absolute;
+  width: 50px;
+  left: 5%;
+  top: 5%;
+  animation: rotate-right-left 3s ease infinite;
+}
+
+.section-6-music-three-img{
+  position: absolute;
+  width: 50px;
+  left: 22%;
+  bottom: 85%;
+  animation: up-down 3s ease infinite;
+}
+
+.section-6-gitar-one-img{
+  position: absolute;
+  width: 300px;
+  left: 5%;
+}
+
+.section-6-kite-pink-img{
+  position: absolute;
+  right: 10%;
+  top: 15%;
+  width: 200px;
+  animation: float-up-down 3s ease infinite;
+}
+
+.section-6-green-balloon-img{
+  position: absolute;
+  right: 10%;
+  top: 0%;
+  width: 200px;
+  animation: float-up-down-right 3s ease infinite;
+}
+
+.section-6-letter-bottom-img{
+  display: block;
+  margin: 100px auto;
+  width: 900px;
+}
+
 /* Keyframes */
 @keyframes zoom-in-zoom-out {
   0% {
@@ -428,5 +648,32 @@ div.section-4-center-box{
   100%{
     transform: rotate(-5deg);
     margin-top: 15px;
+  }
+}
+
+@keyframes up-down {
+  0%{
+    margin-bottom: 10px;
+  }
+
+  50%{
+    margin-bottom: 6px;
+  }
+  100%{
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes rotate-right-left {
+  0%{
+    transform: rotate(10deg);
+  }
+
+  50%{
+    transform: rotate(5deg);
+  }
+
+  100%{
+    transform: rotate(10deg);
   }
 }
