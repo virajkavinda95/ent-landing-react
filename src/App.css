@@ -1,38 +1,432 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+*{
+  overflow-x: hidden;
+}
+
+.header-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.common-btn-center{
+  width: 200px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.2rem !important;
+  padding: 5px 5px !important;
+  border-radius: 50px !important;
+  background-color: #8a59c8 !important;
+  border-color: #8a59c8 !important;
+}
+
+.common-btn-center:hover{
+  background-color: #f7c73f !important;
+  border-color: #f7c73f !important;
+}
+
+.header-nav-box-two .header-nav-logo{
+  display: block;
+  margin: 10px auto;
+}
+
+/* Section one */
+
+.section-1{
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  bottom: 80px;
+  overflow-y: hidden;
+  z-index: -1;
+}
+
+.section-1-img-header{
+  position: relative;
+  width: 100%;
+  bottom: 120px;
+  height: 100%;
+}
+
+.section-1-text-img-one{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-1-group-img-two{
+  position: absolute;
+  top: 38%;
+  left: 30%;
+}
+
+.section-1-group-img-three{
+  position: absolute;
+  top: 60%;
+  right: 40%;
+}
+
+
+.section-1-group-img-four{
+  position: absolute;
+  top: 60%;
+  right: 40%;
+}
+
+img.star-image-common-top{
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  animation: zoom-in-zoom-out 3s ease infinite;
+}
+
+.section-1-bottom-biscuit-one{
+  position: absolute;
+  top: 90%;
+  bottom: 0%;
+  right: 30%;
+}
+
+.section-1-bottom-biscuit-two{
+  position: absolute;
+  top: 90%;
+  bottom: 0%;
+  right: 10%;
+}
+
+/* section 2 */
+
+.section-2{
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  top: 0px;
+  overflow-y: hidden;
+}
+
+.section-2-cup-image{
+  position: relative;
+  top: 10%;
+  left: 10%;
+  width: 300px;
+}
+
+.section-2-center-box{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.section-2-center-text{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  width: 700px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.section-2-right-box .section-2-star-image{
+  position: absolute;
+  top: 10%;
+  right: 25%;
+  width: 100px;
+  animation: zoom-in-zoom-out 3s ease infinite;
+}
+
+.section-2-right-box .section-2-kite-image{
+  position: absolute;
+  top: 40%;
+  right: 10%;
+  width: 200px;
+  animation: float-up-down 3s ease infinite;
+}
+
+/* section-3 */
+
+.section-3{
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  top: 0px;
+  overflow-y: hidden;
+}
+
+.section-3-left-wave-image{
+  position: absolute;
+  left: -20%;
+  top: 0;
+}
+
+.section-3-left-balloonOne-image{
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  width: 200px;
+  animation: float-up-down-right 6s ease infinite;
+}
+
+.section-3-left-balloonTwo-image{
+  position: absolute;
+  left: 5%;
+  top: 30%;
+  width: 150px;
+  animation: float-up-down-top 3s ease infinite;
+}
+
+div.section-3-center-box{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-3-center-text-para{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  width: 500px;
+  text-align: center;
+}
+
+.section-3-left-text-image{
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  width: 400px;
+  transform: rotate(30deg);
+}
+
+.section-3-left-wave-image-tight{
+  position: absolute;
+  top: 40%;
+  right: -20%;
+}
+
+.section-3-btn-group-bottom{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-3-btn-group-bottom .common-btn-center{
+  font-size: 1rem !important;
+  padding: 10px 10px !important;
+  margin-left: 10px;
+  font-weight: 500 !important; 
+}
+
+/* section-4 */
+
+.section-4{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.section-4-left-purple-wave{
+  position: absolute;
+  width: 800px;
+  transform: rotate(5deg);
+  left: -5%;
+  top: -5%;
+}
+
+.section-4-left-green-wave{
+  position: absolute;
+  width: 1000px;
+  transform: rotate(10deg);
+  left: -5%;
+  z-index: -1;
+}
+
+div.section-4-center-box{
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.section-4-center-text-para{
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  width: 700px;
+  text-align: center;
+}
+
+.section-4-right-top-img-box{
+  display: block;
+  float: right;
+  margin-right: 10%;
+  transform: rotate(10deg);
+  padding: 100px;
+}
+
+.section-4-right-gift-cap{
+  position: relative;
+  z-index: 1 !important;
+}
+
+.section-4-right-top-img-box img{
+  width: 250px;
+  z-index: -1;
+}
+
+.section-4-left-bottom-img-box{
+  display: block;
+  margin-top: 20%;
+}
+
+.section-4-left-green-money{
+  position: absolute;
+  width: 80px;
+  left: 10%;
+  top: 25%;
+}
+
+.section-4-left-purple-money{
+  position: absolute;
+  width: 100px;
+  left: 15%;
+  z-index: -1;
+}
+
+.section-4-left-pink-wave{
+  position: absolute;
+  bottom: -5%;
+  width: 700px;
+}
+
+.section-4-left-father-son{
+  position: absolute;
+  width: 300px;
+  top: 35%;
+  left: 5%;
+}
+
+.section-4-left-mother{
+  position: absolute;
+  width: 400px;
+  top: 35%;
+  left: 15%;
+  z-index: -1;
+}
+
+.section-4-left-daughter{
+  position: absolute;
+  width: 300px;
+  left: 11%;
+  top: 60%;
+}
+
+.section-4-left-letter-box{
+  position: absolute;
+  right: 15%;
+  top: 65%;
+  width: 250px;
+}
+
+.section-4-right-green-money{
+  position: absolute;
+  right: 20%;
+  z-index: 1;
+  top: 75%;
+  width: 100px;
+  transform: rotateX(180deg);
+  transform: rotateY(180deg);
+}
+
+.section-4-right-purple-money{
+  position: absolute;
+  right: 24%;
+  z-index: 1;
+  top: 75%;
+  width: 120px;
+}
+
+.section-4-right-blue-money{
+  position: absolute;
+  right: 16%;
+  z-index: 1;
+  top: 75%;
+  width: 90px;
+  transform: rotate(240deg);
+  /* transform: rotateX(-180deg); */
+}
+
+/* Keyframes */
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes float-up-down {
+  0%{
+    transform: rotate(-5deg);
+    margin-top: 10px;
   }
-  to {
-    transform: rotate(360deg);
+
+  25%{
+    transform: rotate(5deg);
+    margin-top: 30px;
+  }
+
+  50%{
+    transform: rotate(10deg);
+    margin-right: 30px;
+  }
+
+  100%{
+    transform: rotate(-5deg);
+    margin-top: 5px;
+  }
+}
+
+@keyframes float-up-down-right {
+  0%{
+    transform: rotate(-5deg);
+    margin-top: 10px;
+  }
+
+  50%{
+    transform: rotate(-3deg);
+    margin-top: 0px;
+  }
+
+  100%{
+    transform: rotate(-5deg);
+    margin-top: 15px;
+  }
+}
+
+@keyframes float-up-down-top {
+  0%{
+    transform: rotate(-5deg);
+    margin-top: 10px;
+  }
+
+  50%{
+    transform: rotate(-3deg);
+    margin-top: 0px;
+  }
+
+  100%{
+    transform: rotate(-5deg);
+    margin-top: 15px;
   }
 }
