@@ -82,7 +82,7 @@ function SectionThree({ lang, sound }) {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
-        muted={sound ? true : false}
+        muted={sound ? false : true}
       />
       <div className="section-3-left-image-box">
         <img

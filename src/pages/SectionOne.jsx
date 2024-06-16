@@ -99,7 +99,7 @@ function SectionOne({ lang, sound }) {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
-        muted={sound ? true : false}
+        muted={sound ? false : true}
       />
 
       <div className="section-1-text-img-center-box">

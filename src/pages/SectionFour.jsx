@@ -111,7 +111,7 @@ function SectionFour({ lang, sound }) {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
-        muted={sound ? true : false}
+        muted={sound ? false : true}
       />
       <div className="section-4-left-top-img-box">
         <img

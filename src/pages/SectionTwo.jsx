@@ -68,7 +68,7 @@ function SectionTwo({ lang, sound }) {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
-        muted={sound ? true : false}
+        muted={sound ? false : true}
       />
       <div className="section-2-left-box">
         <img src={cup} alt="" className="d-block section-2-cup-image" />
