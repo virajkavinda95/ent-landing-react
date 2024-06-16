@@ -1,44 +1,56 @@
 import React, { useEffect, useState } from "react";
 import headerLogo from "../assets/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { setLang } from "../slices/languageSlice";
+import { setSound } from "../slices/audioSlice";
+import BootstrapSwitchButton from "bootstrap-switch-button-react";
+import { FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 
 function Nav() {
-  const [soundEnabled, setSoundEnabled] = useState(true);
+  const dispatch = useDispatch();
 
-  const [audioPermissionGranted, setAudioPermissionGranted] = useState(false);
-  const requestAudioPermission = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: true,
-      });
-      console.log("Audio permission granted");
-      setAudioPermissionGranted(true);
-      // Now you can use the `stream` for audio processing or recording
-    } catch (error) {
-      console.error("Error accessing audio", error);
-      setAudioPermissionGranted(false);
-    }
-  };
-  useEffect(() => {
-    requestAudioPermission();
-  }, []);
+  const [isEnglish, setIsEnglish] = useState(true);
+  const [isMute, setIsMute] = useState(false);
 
-  const toggleSound = () => {
-    setSoundEnabled(!soundEnabled);
+  const handleLanguageChange = (language) => {
+    setIsEnglish((prev) => !prev);
+    dispatch(setLang(language));
   };
+
+  const handleAudioMute = () => {
+    setIsMute((prev) => !prev);
+    dispatch(setSound(isMute));
+  };
+
+  useEffect(() => {}, []);
 
   return (
     <header>
       <nav className="header-nav">
         <div className="header-nav-box-one">
-          <button className="btn btn-primary btn-sm top-common-butoon">
-            English
-          </button>
+          <input
+            type="button"
+            onClick={(e) => handleLanguageChange(e.target.value)}
+            value={isEnglish ? "English" : "Arabic"}
+            className="btn btn-primary btn-sm top-common-butoon"
+          />
+
+          {/* <BootstrapSwitchButton
+            checked={isMute}
+            onlabel={<FaVolumeHigh />}
+            onstyle="danger"
+            offlabel={<FaVolumeXmark />}
+            offstyle="success"
+            style="w-100 mx-3"
+          /> */}
           <button
             type="button"
-            onClick={requestAudioPermission}
-            className="btn btn-primary btn-sm top-common-butoon"
+            onClick={handleAudioMute}
+            className={`btn btn-primary btn-sm top-common-butoon ${
+              isMute ? "mute" : "unmute"
+            }`}
           >
-            {soundEnabled ? "enable" : "disable"}
+            {isMute ? <FaVolumeHigh /> : <FaVolumeXmark />}
           </button>
         </div>
 

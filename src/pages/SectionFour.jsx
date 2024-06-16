@@ -16,10 +16,15 @@ import audio from "../assets/audio/audio4.mp3";
 
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSelector } from "react-redux";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SectionFour() {
+function SectionFour({ lang, sound }) {
+  const language = useSelector(
+    (state) => state.language.translations.sectionFour
+  ); //state.language.translations.sectionTwo
+
   const daugh = useRef(null);
   const gCap = useRef(null);
   const gBox = useRef(null);
@@ -38,7 +43,7 @@ function SectionFour() {
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: ".section-3",
-        toggleActions: "restart pause reverse none",
+        toggleActions: "none pause reverse none",
         start: "top",
         end: "bottom",
         scrub: true,
@@ -67,7 +72,7 @@ function SectionFour() {
       .fromTo(
         letterBRight.current,
         { x: 0 },
-        { x: 0, rotate: 10, duration: 10 },
+        { x: 0, rotate: -20, duration: 10 },
         0
       );
 
@@ -106,6 +111,7 @@ function SectionFour() {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
+        muted={sound ? true : false}
       />
       <div className="section-4-left-top-img-box">
         <img
@@ -121,11 +127,11 @@ function SectionFour() {
       </div>
 
       <div className="section-4-center-box">
-        <p className="section-4-center-text-para">
-          After that much-needed family time, it’s the kids’ favourite part,
-          Eideyah! Time for them to engage in friendly banter as to who received
-          the most.
-        </p>
+        {lang === "English" ? (
+          <p className="section-4-center-text-para">{language.en}</p>
+        ) : (
+          <p className="section-4-center-text-para">{language.ar}</p>
+        )}
       </div>
 
       <div className="section-4-right-top-img-box">

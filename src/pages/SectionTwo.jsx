@@ -7,11 +7,17 @@ import audio from "../assets/audio/audio2.mp3";
 
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { selectTranslation } from "../slices/languageSlice";
+import { useSelector } from "react-redux";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SectionTwo() {
+function SectionTwo({ lang, sound }) {
   const kiteRef = useRef(null);
+
+  const language = useSelector(
+    (state) => state.language.translations.sectionTwo
+  ); //state.language.translations.sectionTwo
 
   // Audio ref
   const audioOne = useRef(null);
@@ -62,19 +68,20 @@ function SectionTwo() {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
+        muted={sound ? true : false}
       />
       <div className="section-2-left-box">
         <img src={cup} alt="" className="d-block section-2-cup-image" />
       </div>
 
       <div className="section-2-center-box">
-        <p className="section-2-center-text">
-          After a whole year of patiently, but eagerly waiting, Eid is finally
-          here! Hands up everyone who missed the incense smells, the outfits and
-          the delicious food? But first, let’s get Eid-ready with our outfits.
-        </p>
+        {lang === "English" ? (
+          <p className="section-2-center-text">{language.en}</p>
+        ) : (
+          <p className="section-2-center-text">{language.ar}</p>
+        )}
 
-        <Button text="Eid Identity" />
+        <Button text={lang === "English" ? "Eid Identity" : "هوية العيد"} />
       </div>
 
       <div className="section-2-right-box">

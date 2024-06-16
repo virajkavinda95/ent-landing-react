@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import headerImg from "../assets/header_cover.png";
+import arabicText from "../assets/arabic_top.png";
 import centerImageOne from "../assets/text_1.png";
 import centerImageJug from "../assets/jug_1.png";
 import centerImageCup from "../assets/cup_2.png";
@@ -16,7 +17,7 @@ import audio from "../assets/audio/audio1.mp3";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SectionOne() {
+function SectionOne({ lang, sound }) {
   const ref = useRef();
 
   const imageLeftRef = useRef(null);
@@ -98,13 +99,14 @@ function SectionOne() {
         style={{ display: "none" }}
         controls={false}
         preload="auto"
+        muted={sound ? true : false}
       />
 
       <div className="section-1-text-img-center-box">
         <img
           ref={centerTextImg}
-          src={centerImageOne}
-          alt=""
+          src={lang === "English" ? centerImageOne : arabicText}
+          alt="center_img"
           className="d-block img-responsive section-1-text-img-one"
           width={300}
         />

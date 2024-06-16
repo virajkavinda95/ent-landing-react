@@ -4,6 +4,8 @@ import pupBalloon from "../assets/pup_balloon.png";
 import Card from "../components/Card";
 import innerBackOne from "../assets/white-card-back.png";
 import innerBackTwo from "../assets/puple-card-back.png";
+import innerBackOneAr from "../assets/white-card-back-ar.png";
+import innerBackTwoAr from "../assets/puple-card-back-ar.png";
 import Button from "../components/Button";
 import kite from "../assets/kite_1.png";
 import rounder from "../assets/left_rounder.png";
@@ -14,10 +16,17 @@ import wavePurple from "../assets/wave_1.png";
 
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSelector } from "react-redux";
+
+import bottom_logo from "../assets/bottom-logo.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function SectionFive() {
+function SectionFive({ lang, sound }) {
+  const language = useSelector(
+    (state) => state.language.translations.sectionFive
+  ); //state.language.translations.sectionTwo
+
   const roundRef = useRef(null);
   const kiteRef = useRef(null);
   const buildRef = useRef(null);
@@ -81,19 +90,31 @@ function SectionFive() {
       />
 
       <div className="section-5-center-card-box">
-        <Card image={innerBackOne} type={"one"} />
-        <Card image={innerBackTwo} type={"sec"} />
+        <Card
+          image={lang === "English" ? innerBackOne : innerBackOneAr}
+          type={"one"}
+        />
+        <Card
+          image={lang === "English" ? innerBackTwo : innerBackTwoAr}
+          type={"sec"}
+        />
         {/* <Card image={innerBackTwo} /> */}
       </div>
 
       <div className="section-5-bottom-box">
-        <h5 className="section-5-bottom-inner-top-text">Greeting Cards</h5>
+        <h5 className="section-5-bottom-inner-top-text">
+          {lang === "English" ? "Greetings Card" : "بطاقات ترحيبية"}
+        </h5>
         <h5 className="section-5-bottom-inner-center-text">
-          To share with your loved ones!
+          {lang === "English"
+            ? "To share with your loved ones!"
+            : "لمشاركتها مع أحبائك!"}
         </h5>
 
-        <Button text="Your Greeting" />
-        <Button text="Create your own" />
+        <Button text={lang === "English" ? "Your Greeting" : "تحية الخاص بك"} />
+        <Button
+          text={lang === "English" ? "Create your own" : "إنشاء الخاصة بك"}
+        />
       </div>
 
       <img
@@ -104,11 +125,11 @@ function SectionFive() {
       />
 
       <div className="section-5-bottom-two-box">
-        <p className="section-5-bottom-two-inner-text">
-          Next up, a treat for the eyes and a feast for the belly, it’s ‘Eid
-          lunch’ with family. Although we might be missing a few due to food
-          coma, there’s plenty of room for laughter and fun.
-        </p>
+        {lang === "English" ? (
+          <p className="section-5-bottom-two-inner-text">{language.en}</p>
+        ) : (
+          <p className="section-5-bottom-two-inner-text">{language.ar}</p>
+        )}
       </div>
 
       <img
@@ -146,13 +167,27 @@ function SectionFive() {
       />
 
       <div className="section-5-margin-bottom-two-box">
-        <p className="section-5-margin-bottom-two-inner-text">
-          Next up, a treat for the eyes and a feast for the belly, it’s ‘Eid
-          lunch’ with family. Although we might be missing a few due to food
-          coma, there’s plenty of room for laughter and fun.
-        </p>
-
-        <Button text="Discover our Eid Events" />
+        {lang === "English" ? (
+          <p className="section-5-margin-bottom-two-inner-text">
+            {language.en}
+          </p>
+        ) : (
+          <p className="section-5-margin-bottom-two-inner-text">
+            {language.ar}
+          </p>
+        )}
+        <Button
+          text={
+            lang === "English"
+              ? "Discover our Eid Events"
+              : "اكتشف فعاليات العيد لدينا"
+          }
+        />
+        <img
+          src={bottom_logo}
+          alt="bottom_logo"
+          className="d-block img-responsive section-5-bottom-logo-img"
+        />
       </div>
     </section>
   );
